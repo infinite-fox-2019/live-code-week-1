@@ -94,8 +94,6 @@ function waterSupply(needEnergy) {
 // RELEASE 3
 function aggregate(solvent) {
   // code here
-  // aggregate('HPCH'); // CH2P
-  // aggregate('HHHO'); // H30
 
   let countH = 0;
   let result = ''
@@ -113,17 +111,22 @@ function aggregate(solvent) {
     }
   }
 
+  result = result + countH
+
+  let arr_result = []
   for (let i = 0; i < result.length; i++) {
-    if (solvent[i] === 'H') {
-      result = result + countH
-    }
+    arr_result.push(result[i])
   }
 
-  return result
+  let temp_result = arr_result.sort()
+  // console.log(temp_result);
+  
+
+  return temp_result.join('')
 
 }
 
-console.log(aggregate('HHHO'));
+console.log(aggregate('HHHO')); //H3O
 console.log(aggregate('HPCH')); // CH2P
 
 
