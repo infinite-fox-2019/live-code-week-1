@@ -1,35 +1,46 @@
 function generateSnake(row, column) {
   //your code here
-  const snakes = []
-  for (let i = 0; i < row; i++) {
-    const row = []
-    for (let j = 0; j < column; j++) {
-      if (i === 0 && j === 0) {
-        row.push('~')
-      } else if (i === 0) {
-        row.push('_')
-      }
+  if (row === 1 && column === 1) {
+    console.log('o')
+  } else if (row === 0 && column === 0) {
+    console.log(`row atau column minimal harus 1`)
+  } else {
+    const snakes = []
+    for (let i = 0; i < row; i++) {
+      const block = []
+      for (let j = 0; j < column; j++) {
+        if (i === 0 && j === 0) {
+          block.push('~')
+        } else if (i === 0) {
+          block.push('_')
+        }
 
-      if (i === row - 1 && j === 0) {
-        row.push('o')
-      } else if (i === row - 1 && j === column - 1) {
-        row.push('|')
-      } else if (i === row - 1) {
-        row.push('_')
-      }
+        if (i !== 0 && i % 2 !== 0) {
+          if (i === row - 1 && j === 0) {
+            block.push('o')
+          } else if (j === column - 1) {
+            block.push('|')
+          } else {
+            block.push('_')
+          }
+        }
+        if (i !== 0 && i % 2 === 0) {
+          if (i === row - 1 && j === column - 1) {
+            block.push('o')
+          } else if (j === 0) {
+            block.push('|')
+          } else {
+            block.push('_')
+          }
+        }
 
-      if (i !== 0 && i % 2 !== 0 && i !== row - 1) {
-        if (j === column - 1) row.push('|')
-        else row.push('_')
       }
-      if (i !== 0 && i % 2 === 0 && i !== row - 1) {
-        if (j === 0) row.push('|')
-        else row.push('_')
-      }
+      snakes.push(block)
     }
-    snakes.push(row)
+    console.log(snakes)
+
   }
-  console.log(snakes.join(`\n`))
+
 }
 
 

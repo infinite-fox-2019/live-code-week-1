@@ -20,15 +20,15 @@ function makeSolvent() {
 // RELEASE 1
 function checkTotalEnergy(solvent) {
   // code here
-  let hEnergy = []
-  let oEnergy = []
+  let totalEnergy = 0
   let hCount = 0
+  let oCount = 0
   for (let i = 0; i < solvent.length; i++) {
     let el = solvent[i]
     if (el === 'H') hCount++
-    if (el === 'O') oEnergy.push(' ')
-    if (hCount % 2 === 0) {
-      hEnergy.push(' ')
+    if (el === 'O') oCount++
+    if (hCount % 2 === 0 && hCount / oCount === 2) {
+      totalEnergy++
     }
   }
 
@@ -58,5 +58,5 @@ function aggregate(solvent) {
   // code here
 }
 // console.log(makeSolvent())
-console.log(checkTotalEnergy(makeSolvent()))
+// console.log(checkTotalEnergy(makeSolvent()))
 console.log(waterSupply(3));

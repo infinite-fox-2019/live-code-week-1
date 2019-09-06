@@ -52,12 +52,31 @@ console.log(boards4);
 
 function marioLastPosition(boards, jumpPower) {
   // code here
+  let jump = (boards.length - 1) - jumpPower
+  let crash = false
+  let index = 0
+  for (let i = 0; i < boards.length; i++) {
+    for (let j = 0; j < boards[i].length; j++) {
+      if (boards[i][j] === 'x') {
+        if (jump < (boards.length - 1) - i) {
+          crash = true
+          index = j - 1
+        }
+      }
+    }
+  }
+
+  if (crash) {
+    console.log(`Oops! You stuck at the step ${index}`)
+  } else {
+    console.log(`Congratulations you win the game`)
+  }
 }
 
 // RELEASE 1
-// const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
-// const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
-// const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
+const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
+const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
+const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
 
 function clearScreen() {
   // Un-comment this line if you have trouble with console.clear();
@@ -76,11 +95,27 @@ function sleep(milliseconds) {
 
 function animate(boards, jumpPower) {
   // code here
+  let track = boards[0].length - 1
+  const iPos = boards.length-1 
+  let jPos = 0
+  boards[iPos][jPos] = '>>'
+  clearScreen()
+  console.log(boards)
+  while (track > 0) {
+    boards[iPos][jPos] = ' '
+    jPos += 1
+    boards[iPos][jPos] = '>>'
+    sleep(1000)
+    clearScreen()
+    console.log(boards)
+    track--
+  }
+  return marioLastPosition(boards, jumpPower);
 }
 
 
 // RELEASE 2
-// animate(boards1, jumpPowerStage1);
+animate(boards1, jumpPowerStage1);
 // RELEASE 3
 // animate(boards2, jumpPowerStage2);
 // animate(boards3, jumpPowerStage3);
