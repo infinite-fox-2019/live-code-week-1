@@ -21,10 +21,26 @@ function makeSolvent() {
 makeSolvent()
 
 // RELEASE 1
+let obj = {}
 function checkTotalEnergy(solvent) {
-  // code here
+  obj = {}
+ for (let i=0; i<solvent.length; i++) {
+   if (!obj[solvent[i]]) {
+    obj[solvent[i]] = 1
+   } else {
+    obj[solvent[i]]+=1
+   }
+  }
+  if (obj.H >= 2 && obj.O >= 1) {
+    return `1 energy ${obj.H} H ${obj.O} O`
+  }
 }
-
+// checkTotalEnergy('HPHO'); // expected return 1 energy 2 H 1 O
+console.log(checkTotalEnergy('HPHO'));
+// checkTotalEnergy('HHHO'); // expected return 1 energy 3 H 1 O
+console.log(checkTotalEnergy('HHHO'));
+// checkTotalEnergy('HHHHOO'); // expected return 1 energy 4 H 2 O
+console.log(checkTotalEnergy('HHHHOO'));
 // RELEASE 2
 function waterSupply(needEnergy) {
   // code here

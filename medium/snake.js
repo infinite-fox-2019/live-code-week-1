@@ -34,7 +34,8 @@ function generateSnake(row, column) {
       console.log(display);
   }
 }
-generateSnake(2, 10);
+generateSnake(5, 9);
+// console.log(generateSnake(0,0));
 
 /*
 
