@@ -40,9 +40,20 @@ const boards4 = printBoard(stage4, lengthStage4);
 // console.log(boards4);
 
 function marioLastPosition(boards, jumpPower) {
+  let countX = 0
   for (let i=0; i<boards.length; i++) {
     for (let j=0; j<board[i].length; j++) {
-      
+      if (board[i][j] !== 'x') {
+        return `Congratulations you win the game`
+      } else {
+        countX++
+      }
+      if (countX < jumpPower) {
+        returnn `Congratulations you win the game`
+      }
+      if (countX === jumpPower) {
+        return `'Oops! You stuck at the step 0'`
+      }
     }
   }
   

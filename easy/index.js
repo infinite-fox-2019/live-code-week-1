@@ -1,12 +1,13 @@
 // RELEASE 0
-function makeSolvent() {
-  const availableIngredients = 'CFHOP';
-   
+
   let randIdx = Math.floor(Math.random() * 4) + 1
   console.log(randIdx);
   let randParam = Math.floor(Math.random() * 6) + 4
   console.log(randParam);
-  
+
+function makeSolvent() {
+  const availableIngredients = 'CFHOP';
+   
   let res = []
   let solvent = []
   for (let i=0; i<3; i++) {
@@ -25,6 +26,7 @@ makeSolvent()
 
 
 // RELEASE 1
+let energi = 0
 let obj = {}
 function checkTotalEnergy(solvent) {
   obj = {}
@@ -35,8 +37,13 @@ function checkTotalEnergy(solvent) {
     obj[solvent[i]]+=1
    }
   }
+  
   if (obj.H >= 2 && obj.O >= 1) {
-    return `1 energy ${obj.H} H ${obj.O} O`
+    energi = 1
+    return `${energi} energy ${obj.H} H ${obj.O} O`
+  } if (obj.H !== 2 && obj.H % 2 === 0 && obj.O !== 1 && obj.O % 2 === 0) {
+    energi += 1
+    return `${energi} energy ${obj.H} H ${obj.O} O`
   }
 }
 // checkTotalEnergy('HPHO'); // expected return 1 energy 2 H 1 O
@@ -46,15 +53,30 @@ console.log(checkTotalEnergy('HHHO'));
 // checkTotalEnergy('HHHHOO'); // expected return 1 energy 4 H 2 O
 console.log(checkTotalEnergy('HHHHOO'));
 
-
 // RELEASE 2
+let larutan = makeSolvent()
+let idx = 0
 function waterSupply(needEnergy) {
   let res = []
   let obj = {}
-  for (let i=0; i<3; i++) {
-    if (solvent)
+  
+  for (let i=0; i<randIdx; i++) {
+    if (!obj.Name) {
+      obj.Name = larutan
+    }
+    if (!obj.energy) {
+      obj.energy = energi
+    }
+    idx = i
   }
- 
+  res.push(obj)
+  console.log(res);
+  
+  let full = 0
+  full += res[idx].energy
+  if (full === energy) {
+    return ''
+  }
 }
 
 // RELEASE 3
