@@ -103,6 +103,7 @@ function sleep (milliseconds) {
 
 function animate(boards) {
     // proses animasi dimana menggunakan printBoard, sleep, dan clearScreen
+    
 }
 
 animate(boards);
