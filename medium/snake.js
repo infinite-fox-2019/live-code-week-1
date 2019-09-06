@@ -31,4 +31,4 @@ function generateSnake(row, column) {
   console.log(snake)
 }
 
-generateSnake(3, 6);
+generateSnake(7, 5);

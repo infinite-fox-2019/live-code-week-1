@@ -52,6 +52,8 @@ function marioLastPosition(boards, jumpPower) {
       if(i===3){
         boards[i][j]="M"
         count++
+      }else if(boards[i][j]==="x"){
+        boards[i+1][j]="M"
       }
       console.log(boards,count)
     }
@@ -62,7 +64,7 @@ function marioLastPosition(boards, jumpPower) {
 
 // RELEASE 1
  const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
- //const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
+ const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
  //const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
 
 function clearScreen() {

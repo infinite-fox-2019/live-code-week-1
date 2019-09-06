@@ -28,7 +28,7 @@ function makeSolvent() {
 
 // RELEASE 1
 function checkTotalEnergy(solvent) {
-  console.log(solvent)
+  //console.log(solvent)
   let countH=0
   let countO=0
   let energy = 0
@@ -40,22 +40,49 @@ function checkTotalEnergy(solvent) {
     }
   }
   //console.log(countH, countO)
-  if(countH%2===0 && countO%1===0){
+  if(countH>=2 && countO>=1){
     energy++
   }
-  console.log(energy)
+  if(countH>=4 && countO>=2){
+    energy++
+  }
+  return energy
 }
 
-console.log(checkTotalEnergy(makeSolvent()))
+//checkTotalEnergy(makeSolvent())
 
 // RELEASE 2
 function waterSupply(needEnergy) {
   // code here
+  let hasil =[]
+  let count = 0
+  //console.log(checkTotalEnergy(makeSolvent()))
+    while(count<=needEnergy){
+      let obj = {}
+      makeSolvent()
+      count+=checkTotalEnergy(makeSolvent())
+      
+      //console.log(count, checkTotalEnergy(makeSolvent()),makeSolvent())
+      obj.name=makeSolvent()
+      obj.energy=checkTotalEnergy(makeSolvent())
+      hasil.push(obj)
+      
+    }
+
+  return hasil
+    
 }
 
 // RELEASE 3
 function aggregate(solvent) {
   // code here
+  let senyawa = waterSupply(solvent)
+  //console.log(senyawa)
+  for(let i=0; i<senyawa.length; i++){
+    //console.log(senyawa[i].name)
+  }
+
 }
 
-console.log(waterSupply(3));
+console.log(aggregate(3));
+//console.log(waterSupply(3));
