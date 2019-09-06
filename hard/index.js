@@ -15,22 +15,67 @@ const jumpPowerStage4 = 2;
 
 function printBoard(strTrack, lengthTrack) {
   // code here
+  let out = []
+  for(let i = 0; i < strTrack.length; i+= lengthTrack){
+    let tempOut = []
+    for(let j = 0; j < lengthTrack; j++){  
+      tempOut.push(strTrack[i+j])
+    }
+    out.push(tempOut)
+  }
+  
+  return out
 }
-
 const boards1 = printBoard(stage1, lengthStage1);
 const boards2 = printBoard(stage2, lengthStage2);
 const boards3 = printBoard(stage3, lengthStage3);
 const boards4 = printBoard(stage4, lengthStage4);
 
 // RELEASE 0
-// console.log(boards1);
-// console.log(boards2);
-// console.log(boards3);
-// console.log(boards4);
+console.log(boards1);
+console.log(boards2);
+console.log(boards3);
+console.log(boards4);
 
 function marioLastPosition(boards, jumpPower) {
   // code here
+console.log(boards.length)
+console.log(jumpPower)
+for(let i = 0 ; i <boards.length ; i++){
+  if (boards[boards.length-1][0] == 'o'){
+    boards[boards.length-1][0] = 'P1'
+  }
+
+  for (let j = 0 ; j <boards[i].length; j++){
+  
+    if (boards[boards.length-1][j] == 'x'){
+      let lompat = ((boards.length-1)-jumpPower)
+      lompat
+      j
+      if (lompat < 0 ) {
+      } else {
+      boards[lompat+i][j+1] = 'P1'
+      }
+
+    } else if (boards[boards.length-1][j] !== 'x'){
+      boards[boards.length-1][j] = 'P1'
+      //break
+    }
+  }
+}return boards
 }
+
+// const jumpPowerStage1 = 0;
+// const jumpPowerStage2 = 3;
+// const jumpPowerStage3 = 6;
+// expected result stage 1 => 'Congratulations you win the game'
+// expected result stage 2 => 'Congratulations you win the game'
+// expected result stage 3 => 'Oops! You stuck at the step 0'
+
+console.log(marioLastPosition(boards1,jumpPowerStage1))
+console.log(marioLastPosition(boards2,jumpPowerStage2))
+console.log(marioLastPosition(boards3,jumpPowerStage3))
+// console.log(marioLastPosition(boards4,jumpPowerStage4))
 
 // RELEASE 1
 // const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
