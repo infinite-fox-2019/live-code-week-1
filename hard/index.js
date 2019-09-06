@@ -32,33 +32,51 @@ function printBoard(strTrack, lengthTrack) {
 }
 
 const boards1 = printBoard(stage1, lengthStage1)
-const boards2 = printBoard(stage2, lengthStage2)
-const boards3 = printBoard(stage3, lengthStage3)
-const boards4 = printBoard(stage4, lengthStage4)
+// const boards2 = printBoard(stage2, lengthStage2)
+// const boards3 = printBoard(stage3, lengthStage3)
+// const boards4 = printBoard(stage4, lengthStage4)
 
 // RELEASE 0
 console.log(boards1)
-console.log(boards2)
-console.log(boards3)
-console.log(boards4)
+// console.log(boards2)
+// console.log(boards3)
+// console.log(boards4)
 
 function marioLastPosition(boards, jumpPower) {
   let count = 0
   jumpPower
   // const start = [boards[boards.length - 1][0]]
-  let player
   const kordinatStart = []
   const kordinatFinish = []
 
   for (let i = 0; i < boards.length; i++) {
     for (let j = 0; j < boards[i].length; j++) {
-      console.log({ count, i, j })
+      // console.log({ count, i, j })
       if (i == boards.length - 1 && j == 0) kordinatStart.push(count, j)
       if (i == boards.length - 1 && j == boards[i].length - 1) kordinatFinish.push(count, j)
     }
     count++
   }
-  player = kordinatStart
+
+  console.log('asdfasdf', boards[kordinatFinish[0]][kordinatFinish[1]])
+  for (let i = 1; i < 4; i++) {
+    player.icon = 'P'
+    player.pos = kordinatStart
+    let x = player.pos[0]
+    let y = player.pos[1]
+    boards[x][y] = player.icon
+    console.log(player)
+    if (boards[x][y + i] === ' ') {
+      boards[x][y] = ' '
+      player.pos = [x, y + i]
+      x = player.pos[0]
+      y = player.pos[y + i]
+      boards[x][y] = player.icon
+      player
+    }
+    let player = {}
+    counter++
+  }
 }
 
 // RELEASE 1
