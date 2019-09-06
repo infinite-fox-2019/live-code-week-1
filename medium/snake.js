@@ -53,6 +53,7 @@ function generateSnake(row, column) {
   }
 }
 
+
 // generateSnake(6,10)
 generateSnake(0, 0)
 generateSnake(1, 1)
