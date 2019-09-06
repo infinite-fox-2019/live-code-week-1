@@ -94,27 +94,27 @@ function animate(boards, jumpPower) {
         displayBoard(boards);
       }
       //move right
-      boards[mario[0]][mario[1]] = 'o';
-      mario[1]++;
-      boards[mario[0]][mario[1]] = 'm';
-      displayBoard(boards);
-    } else {
-      if(mario[0 - 1]) {
-        console.log(mario[0] - 1 + '   ' + mario[1]);
-        while(boards[mario[0] - 1][mario[1]] === 'o') {
-          boards[mario[0]][mario[1]] = 'o';
-          mario[0]++;
-          boards[mario[0]][mario[1]] = 'm';
-          displayBoard(boards);
-        }
+      if(boards[mario[0]][mario[1 + 1]] === 'x') {
+        //stuck
       } else {
-        //move right
         boards[mario[0]][mario[1]] = 'o';
         mario[1]++;
         boards[mario[0]][mario[1]] = 'm';
         displayBoard(boards);
-        //move down
       }
+    } else {
+      //move down
+      // while(boards[mario[0] - 1][mario[1]] === 'o') {
+      //   boards[mario[0]][mario[1]] = 'o';
+      //   mario[0]++;
+      //   boards[mario[0]][mario[1]] = 'm';
+      //   displayBoard(boards);
+      // }
+      //move right
+      boards[mario[0]][mario[1]] = 'o';
+      mario[1]++;
+      boards[mario[0]][mario[1]] = 'm';
+      displayBoard(boards);
     }
   }
 }
