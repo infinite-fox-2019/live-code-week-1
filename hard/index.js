@@ -14,7 +14,21 @@ const jumpPowerStage4 = 2;
 // STATIC Stage End
 
 function printBoard(strTrack, lengthTrack) {
-  // code here
+  let output = [];
+  let counter = 0;
+  for(i = 0; i < strTrack.length/lengthTrack; i++){
+    output.push([]);
+    for(j = 0; j < lengthTrack; j++){
+      if(strTrack[counter] == 'o'){
+        output[i].push(' ')
+      }
+      else{
+        output[i].push(strTrack[counter])
+      }
+      counter++;
+    }
+  }
+  return output;
 }
 
 const boards1 = printBoard(stage1, lengthStage1);
@@ -28,9 +42,61 @@ const boards4 = printBoard(stage4, lengthStage4);
 // console.log(boards3);
 // console.log(boards4);
 
-function marioLastPosition(boards, jumpPower) {
-  // code here
+// Fungsi untuk mengecek apakah ada rintangan diindeks itu
+function kordinatRintangan(boards , indeks){
+
+  let kordinatRintangan = []
+  for(let i = 0; i < boards.length; i++){
+    for(let j = 0; j < boards[i].length; j++){
+      if(boards[i][j] == 'x')
+      kordinatRintangan.push([i,j])
+    }
+  }
+
+  for(let i = 0; i < kordinatRintangan.length; i++){
+    if((kordinatRintangan[i][0] == indeks[0]) && (kordinatRintangan[i][1] == indeks[1])){
+      return true;
+    }
+  }
+  return false;
 }
+
+// console.log(boards2)
+// console.log(kordinatRintangan(boards2,[3,2]))
+
+function marioLastPosition(boards, jumpPower) {
+  let xm = boards.length-1
+  let marioStartPosisition  = [xm,0];
+  boards[xm][0] = 'M'
+
+  boards[xm].length-1
+  let finish = false;
+  // while(!finish){
+    
+  //   if(!kordinatRintangan(boards, [marioStartPosisition[0],marioStartPosisition[1]+1])){
+  //     marioStartPosisition[1] += 1
+  //     boards[xm][marioStartPosisition[1]] = 'M'
+  //     console.log('asd')
+  //   }
+
+  //   console.log(boards)
+    
+
+  //   if(marioStartPosisition[1] == boards[xm][boards[xm].length-1]){
+  //     console.log(boards)
+  //     finish = true;
+  //     break;
+  //   }
+
+  // }
+  
+}
+
+marioLastPosition(boards1, jumpPowerStage1);
+console.log(boards1)
+
+
+
 
 // RELEASE 1
 // const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
