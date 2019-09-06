@@ -15,6 +15,20 @@ const jumpPowerStage4 = 2;
 
 function printBoard(strTrack, lengthTrack) {
   // code here
+  let board = []
+
+  let index = 0
+  let stringLength = strTrack.length
+
+  for (let i = 0; i < (stringLength / lengthTrack); i++) {
+    let row = []
+    for (let j = 0; j < lengthTrack; j++) {
+      row[j] = strTrack[index]
+      index++
+    }
+    board.push(row)
+  }
+  return board
 }
 
 const boards1 = printBoard(stage1, lengthStage1);
@@ -30,6 +44,66 @@ const boards4 = printBoard(stage4, lengthStage4);
 
 function marioLastPosition(boards, jumpPower) {
   // code here
+  let finished = false
+  let stuck = false
+  let steps = 0
+  let now = [boards.length - 1, 0]
+
+  boards[now[0]][now[1]] = 'M'
+
+  while (!finished || !stuck) {
+    let jumpCount = 0
+    while (jumpCount < jumpPower) {
+      boards[now[0]][now[1]] = ' '
+      now[0]++
+      if (isFilled(boards, now[0], now[1])) {
+        stuck = true
+      } else {
+        boards[now[0]][now[1]] = 'M'
+        steps = steps + 1g
+      }
+    }
+    jumpCount = 0
+
+    boards[now[0]][now[1]] = ' '
+    now[1]++
+    if (isFilled(boards, now[0], now[1])) {
+      stuck = true
+    }
+    boards[now[0]][now[1]] = 'M'
+    steps = steps + 1
+
+
+    while (now[0] !== 0 || boards[now[0] - 1] === 'O') {
+      boards[now[0]][now[1]] = ' '
+      now[0]++
+      if (isFilled(boards, now[0], now[1])) {
+        stuck = true
+      } else {
+        boards[now[0]][now[1]] = 'M'
+        steps = steps + 1
+      }
+    }
+
+    if (now[1] === board.length - 1) {
+      finished = true
+    }
+
+  }
+
+  if (finished) {
+    console.log('Congratiulations! You win the game!');
+  } else if (stuck) {
+    console.log(`Oops! You stuck at step ${steps}`);
+  }
+}
+
+function isFilled(boards, row, col) {
+  if (boards[row][col] === 'X') {
+    return true
+  }
+
+  return false
 }
 
 // RELEASE 1
@@ -52,8 +126,28 @@ function sleep(milliseconds) {
   }
 }
 
-function animate(boards, jumpPower) {
-  // code here
+function printBoard(boards) {
+  let result = ''
+
+  for (let i = 0; i < boards.length; i++) {
+    let row = ''
+    for (let j = 0; j < boards[i].length; j++) {
+      row += `${boards[i][j]}`
+    }
+
+    result += row
+    result += '\n'
+  }
+
+  console.log(result);
+}
+
+function animate(boards) {
+  // code here  
+  printBoard(boards)
+  sleep(500)
+  clearScreen()
+
 }
 
 
