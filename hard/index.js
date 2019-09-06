@@ -14,8 +14,24 @@ const jumpPowerStage4 = 2;
 // STATIC Stage End
 
 function printBoard(strTrack, lengthTrack) {
-  // code here
-}
+
+  let rowCount = 0
+  let board = [];
+  while (rowCount < strTrack.length) {
+
+      let subBoard = [];
+      for (let i = 0;i<lengthTrack;i++) {
+        if (strTrack[rowCount] == 'o') {
+          subBoard.push(' ')
+        }else  {
+          subBoard.push('♜')
+        }
+        rowCount++
+      }
+      board.push(subBoard)
+  }//end while
+  return board
+}//end function
 
 const boards1 = printBoard(stage1, lengthStage1);
 const boards2 = printBoard(stage2, lengthStage2);
@@ -29,11 +45,49 @@ const boards4 = printBoard(stage4, lengthStage4);
 // console.log(boards4);
 
 function marioLastPosition(boards, jumpPower) {
-  // code here
-}
+
+let position = [];
+let board = boards;
+let mario = '👾'
+
+board[board.length-1][0] = mario
+
+// let firstPoss = board[]
+
+let endGame = false; 
+
+// while (endGame == false) {
+
+  for (let i = board.length-1;i<board.length;i++) {
+    let temp = false;
+    for (let j = 0;j<board[i].length-1;j++) {
+        if (board[i][j+1] == 'x') {
+          temp = true;
+        }
+        if (temp == true) {
+          let rek = [];
+          rek.push(i);
+          rek.push(j);
+          position.push(rek);
+        }
+    }
+  }
+
+  console.log(position)
+
+
+
+// }//end while
+  
+
+
+
+
+
+}//end function 
 
 // RELEASE 1
-// const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
+const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
 // const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
 // const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
 
