@@ -104,11 +104,26 @@ function aggregate(solvent) {
     if (solvent[i] === 'H') {
       countH++
     }
+
+    if (countH > 1 && solvent[i] === 'H') {
+      countH++
+      i++
+    } else {
+      result = result + solvent[i]
+    }
   }
 
-  for (let i = 0; i < solvent.length; i++) {
-    
+  for (let i = 0; i < result.length; i++) {
+    if (solvent[i] === 'H') {
+      result = result + countH
+    }
   }
-  
+
+  return result
+
 }
+
+console.log(aggregate('HHHO'));
+console.log(aggregate('HPCH')); // CH2P
+
 
