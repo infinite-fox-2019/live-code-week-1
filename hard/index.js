@@ -35,7 +35,7 @@ const boards4 = printBoard(stage4, lengthStage4);
 
 // RELEASE 0
 // console.log(boards1);
-console.log(boards2);
+// console.log(boards2);
 // console.log(boards3);
 // console.log(boards4);
 
@@ -43,10 +43,12 @@ function marioLastPosition(boards, jumpPower) {
   // code here
   let stuck = -1
   for(let i = boards.length - 1; i < boards.length; i++){
+    let highestJump = i - jumpPower;
+    if(highestJump < 0) {
+      highestJump = 0;
+    }
     for(let j = 0; j < boards[i].length; j++) {
-      console.log(i - jumpPower)
-      console.log(j);
-      if(boards[i - jumpPower][j] !== 'o') {
+      if(boards[highestJump][j] !== 'o') {
         stuck = j;
         break;
       } 
@@ -58,7 +60,7 @@ function marioLastPosition(boards, jumpPower) {
 
 // RELEASE 1
 // const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
-const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
+// const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
 // const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
 
 function clearScreen() {
@@ -77,14 +79,56 @@ function sleep(milliseconds) {
 }
 
 function animate(boards, jumpPower) {
-  // code here
+  let mario = [boards.length - 1, 0];
+  boards[mario[0]][mario[1]] = 'm';
+  displayBoard(boards);
+
+  column = boards[0].length;
+  while(mario[1] < column - 1) {
+    if(boards[mario[0]][mario[1] + 1] === 'x') {
+      //jump
+      for(let i = 0; i < jumpPower; i++) {
+        boards[mario[0]][mario[1]] = 'o';
+        mario[0]--;
+        boards[mario[0]][mario[1]] = 'm';
+        displayBoard(boards);
+      }
+      //move right
+      boards[mario[0]][mario[1]] = 'o';
+      mario[1]++;
+      boards[mario[0]][mario[1]] = 'm';
+      displayBoard(boards);
+    } else {
+      if(mario[0 - 1]) {
+        console.log(mario[0] - 1 + '   ' + mario[1]);
+        while(boards[mario[0] - 1][mario[1]] === 'o') {
+          boards[mario[0]][mario[1]] = 'o';
+          mario[0]++;
+          boards[mario[0]][mario[1]] = 'm';
+          displayBoard(boards);
+        }
+      } else {
+        //move right
+        boards[mario[0]][mario[1]] = 'o';
+        mario[1]++;
+        boards[mario[0]][mario[1]] = 'm';
+        displayBoard(boards);
+        //move down
+      }
+    }
+  }
 }
 
+function displayBoard(boards) {
+  clearScreen();
+  console.log(boards);
+  sleep(400);
+}
 
 // RELEASE 2
 // animate(boards1, jumpPowerStage1);
 // RELEASE 3
-// animate(boards2, jumpPowerStage2);
+animate(boards2, jumpPowerStage2);
 // animate(boards3, jumpPowerStage3);
 // RELEASE 4
 // animate(boards4, jumpPowerStage4);
