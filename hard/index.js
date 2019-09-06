@@ -14,13 +14,26 @@ const jumpPowerStage4 = 2;
 // STATIC Stage End
 
 function printBoard(strTrack, lengthTrack) {
-  // code here
+  let count = 0
+  let penambahan = strTrack.length/lengthTrack
+  let result = []
+  for(let i=0; i<strTrack.length; i+=penambahan){
+      result.push([])
+      for(let j=0; j<lengthTrack; j++){
+          if(strTrack[i+j]==='o'){
+              result[count].push(' ')
+          }else if(strTrack[i+j]==='x'){
+              result[count].push(strTrack[i+j])
+          }
+      }
+      count+=1
+  }
+  return result
 }
-
-const boards1 = printBoard(stage1, lengthStage1);
-const boards2 = printBoard(stage2, lengthStage2);
-const boards3 = printBoard(stage3, lengthStage3);
-const boards4 = printBoard(stage4, lengthStage4);
+// const boards1 = printBoard(stage1, lengthStage1);
+// const boards2 = printBoard(stage2, lengthStage2);
+// const boards3 = printBoard(stage3, lengthStage3);
+// const boards4 = printBoard(stage4, lengthStage4);
 
 // RELEASE 0
 // console.log(boards1);
@@ -29,7 +42,16 @@ const boards4 = printBoard(stage4, lengthStage4);
 // console.log(boards4);
 
 function marioLastPosition(boards, jumpPower) {
-  // code here
+  let arr = [
+    {
+      name: 'm',
+      position: 0
+    }
+  ]
+  let randomDice = Math.floor(Math.random()*jumpPower)+1
+  for(let i=0; i<boards.length; i++){
+    
+  }
 }
 
 // RELEASE 1
