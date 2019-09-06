@@ -10,11 +10,11 @@ function generateSnake(row, column) {
       for(let j = 0; j<column;j++){
         if(i == 0 && j == 0){
           arr[i].push("~");
-        } else if ((j == column-1 && row %2 == 1 && i%2 == 1 )||( j ==0 && row %2 == 0 && i%2==0)){
-          arr[i].push("|");
-        } else if ((j == 0 && i == row-1 && row % 2 ==1) || (j == column-1 && i == row-1 && row %2 == 0)){
+        } else if ((j == 0 && i == row-1 && row % 2 ==0) || (j == column-1 && i == row-1 && row %2 == 1)){
           arr[i].push("o");
-        } else {
+        } else if ((j == column-1 && row %2 == 0 && i%2 == 1 )||( j ==0 && row %2 == 1 && i%2==0)||(j == column-1 && i %2 ==1 && row%2 ==1)||(j == 0 && i %2 ==0 && row%2 ==0)){
+          arr[i].push("|");
+        }  else {
           arr[i].push("-");
         }
       }
