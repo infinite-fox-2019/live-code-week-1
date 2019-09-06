@@ -97,6 +97,7 @@ function animate(boards, jumpPower) {
   // code here
   let track = boards[0].length - 1
   const iPos = boards.length-1 
+  let jump = jumpPower
   let jPos = 0
   boards[iPos][jPos] = '>>'
   clearScreen()
@@ -104,6 +105,15 @@ function animate(boards, jumpPower) {
   while (track > 0) {
     boards[iPos][jPos] = ' '
     jPos += 1
+    // release 3
+    // if(boards[iPos][jPos+1] === 'x'){
+    //   while(jump > 0){
+    //     boards[iPos][jPos] = ' '
+    //     iPos+=1
+    //     boards[iPos][jPos] = '>>'
+    //     jump--
+    //   }
+    // }
     boards[iPos][jPos] = '>>'
     sleep(1000)
     clearScreen()

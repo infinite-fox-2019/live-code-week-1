@@ -32,7 +32,6 @@ function checkTotalEnergy(solvent) {
     }
   }
 
-
   return totalEnergy
 }
 
@@ -56,7 +55,32 @@ function waterSupply(needEnergy) {
 // RELEASE 3
 function aggregate(solvent) {
   // code here
+  console.log(solvent)
+  const obj = {
+    C: 0,
+    F: 0,
+    H: 0,
+    O: 0,
+    P: 0
+  }
+
+  for (let j = 0; j < solvent.length; j++) {
+    for (let key in obj) {
+      if (key === solvent[j]) obj[key]++
+    }
+  }
+
+  let display = ''
+  for (let keys in obj) {
+    if (obj[keys] > 0) {
+      if (obj[keys] === 1) display += keys
+      else display += keys + obj[keys]
+    }
+  }
+
+  return display
 }
 // console.log(makeSolvent())
 // console.log(checkTotalEnergy(makeSolvent()))
 console.log(waterSupply(3));
+console.log(aggregate(makeSolvent()))

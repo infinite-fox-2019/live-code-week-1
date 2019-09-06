@@ -9,13 +9,8 @@ function generateSnake(row, column) {
     for (let i = 0; i < row; i++) {
       const block = []
       for (let j = 0; j < column; j++) {
-        if (i === 0 && j === 0) {
-          block.push('~')
-        } else if (i === 0) {
-          block.push('_')
-        }
+        if (i % 2 !== 0) {
 
-        if (i !== 0 && i % 2 !== 0) {
           if (i === row - 1 && j === 0) {
             block.push('o')
           } else if (j === column - 1) {
@@ -24,10 +19,12 @@ function generateSnake(row, column) {
             block.push('_')
           }
         }
-        if (i !== 0 && i % 2 === 0) {
-          if (i === row - 1 && j === column - 1) {
+        if (i % 2 === 0) {
+          if (i === 0 && j === 0) {
+            block.push('~')
+          } else if (i === row - 1 && j === column - 1) {
             block.push('o')
-          } else if (j === 0) {
+          } else if (j === 0 && i !== 0) {
             block.push('|')
           } else {
             block.push('_')
@@ -37,12 +34,18 @@ function generateSnake(row, column) {
       }
       snakes.push(block)
     }
-    console.log(snakes)
 
+    snakes.forEach(el => {
+      console.log(el.join(''))
+    })
+    console.log(`\n`)
   }
-
 }
 
 
 
 generateSnake(3, 6);
+generateSnake(6, 10)
+generateSnake(1, 30)
+generateSnake(1, 1)
+generateSnake(0, 0)
