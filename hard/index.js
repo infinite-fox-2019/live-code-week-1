@@ -14,7 +14,22 @@ const jumpPowerStage4 = 2;
 // STATIC Stage End
 
 function printBoard(strTrack, lengthTrack) {
-  // code here
+  let res = []
+  let count = 0
+  for (let i = 0; i < strTrack.length; i += lengthTrack) {
+    res.push([])
+    for (let j = 0; j < lengthTrack; j++) {
+      if (strTrack[i+j] === 'o') {
+        res[count].push(' ')
+      }
+      else {
+        strTrack[j]
+        res[count].push('x')
+      }
+    }
+    count++
+  }
+  return res
 }
 
 const boards1 = printBoard(stage1, lengthStage1);
@@ -29,11 +44,25 @@ const boards4 = printBoard(stage4, lengthStage4);
 // console.log(boards4);
 
 function marioLastPosition(boards, jumpPower) {
-  // code here
+  boards
+
+  for (let i = boards.length-1; i >= 0; i--) {
+    console.log(boards[i]);
+    for (let j = 0; j < boards[i].length; j++) {
+      console.log(i, j);
+    }
+  }
+
+  for ()
 }
 
 // RELEASE 1
-// const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
+// const jumpPowerStage1 = 0;
+// const jumpPowerStage2 = 3;
+// const jumpPowerStage3 = 6;
+// const jumpPowerStage4 = 2;
+
+const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
 // const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
 // const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
 
