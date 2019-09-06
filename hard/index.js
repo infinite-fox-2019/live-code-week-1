@@ -62,10 +62,8 @@ function marioLastPosition(boards, jumpPower) {
       }
       else if (boards[i][j] === 'x') {
         let countX = 1
-        console.log(i, j, boards[i][j]);
 
         for (let k = i; k > 0; k--) {
-          console.log(k);
           if (boards[k][j] === 'x') countX++
         }
 
