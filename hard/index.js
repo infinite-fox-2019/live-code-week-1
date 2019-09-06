@@ -37,19 +37,45 @@ const boards3 = printBoard(stage3, lengthStage3);
 const boards4 = printBoard(stage4, lengthStage4);
 
 // RELEASE 0
-console.log(boards1);
-console.log(boards2);
-console.log(boards3);
-console.log(boards4);
+// console.log(boards1);
+// console.log(boards2);
+// console.log(boards3);
+// console.log(boards4);
 
 function marioLastPosition(boards, jumpPower) {
-  // code here
+  let pos = [boards.length-1,0]
+  let o = []
+  for(let i=0 ; i<boards.length ; i++){
+      for(let j=0 ; j<boards[i].length; j++){
+          if (boards[i][j] == ' '){
+            // console.log(i)
+            o.push([i, j]);
+          }
+      }
+  }
+  
+  while ( pos !== [boards[boards.length-1],boards[boards.length-1]]){
+    let terpendek = Infinity
+    let index = 0
+    for(let i = 0 ; i<o.length ; i++){
+        if(Math.abs(o[i][0] - pos[0]) + Math.abs(o[i][1] - pos[1]) < terpendek){
+            terpendek = Math.abs(o[i][0] - pos[0]) + Math.abs(o[i][1] - pos[1])
+            index = i
+        }
+    }
+    pos = board[o[index][0]][o[index][1]]
+    o.splice(index, 1)
+  }
+    
+  console.log(board)
 }
 
+
+
 // RELEASE 1
-// const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
-// const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
-// const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
+const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
+const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
+const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
 
 function clearScreen() {
   // Un-comment this line if you have trouble with console.clear();

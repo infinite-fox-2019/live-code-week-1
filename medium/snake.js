@@ -32,10 +32,10 @@ function generateSnake(row,column){
           arrIn = [];
         }
         if (i === row-1 && j === 0){
-          arrIn.push('o')
+          arrIn.push('~')
         }
         else if (i === 0 && j == 0){
-          arrIn.push('~')
+          arrIn.push('o')
         }else{
           arrIn.push('_')
         }
@@ -52,7 +52,7 @@ function generateSnake(row,column){
       }
   }
 
-  // arrOut = reverse(arrRev);
+  arrOut = reverse(arrRev);
   return arrOut;
 }
 
