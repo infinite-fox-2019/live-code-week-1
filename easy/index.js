@@ -66,7 +66,7 @@ function waterSupply(needEnergy) {
 function aggregate(solvent) {
   // code here
   let daftarSolvent = makeSolvent(solvent).split(',')
-  console.log(daftarSolvent);
+  let hasil = []
   for( let i = 0; i < daftarSolvent.length; i++){
       let temp = ''
       let countH = 0
@@ -98,17 +98,13 @@ function aggregate(solvent) {
               temp[i+1] += countO
           }
       }
-      
-      console.log(temp);
-      console.log(countH);
-      console.log(countO);
-      
-      
-      
-  }
+      hasil.push(temp)
+    }
+  console.log(hasil);
+  
 }
 
-//   console.log(waterSupply(3));
-//   console.log(makeSolvent(3));
-//   console.log(checkTotalEnergy(3));
+  console.log(waterSupply(3));
+  console.log(makeSolvent(3));
+  console.log(checkTotalEnergy(3));
 console.log(aggregate(3));
