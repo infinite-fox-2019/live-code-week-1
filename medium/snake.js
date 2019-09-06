@@ -5,19 +5,19 @@ function generateSnake(row, column) {
     console.log('o');
   } else {
     for(let i = 0; i < row; i++) {
-      let temp = '';
+      let snake = '';
       for(let j = 0; j < column; j++) {
         if(i == 0 && j == 0) {
-          temp+='~';
+          snake+='~';
         } else if((j == column-1 && i % 2 !== 0) || (i % 2 == 0 && j == 0)) {
-          temp+='|';
+          snake+='|';
         } else if(j === column -1 && i == row-1 || j === 0 && i == row-1) {
-          temp+='o';
+          snake+='o';
         } else {
-          temp+='_';
+          snake+='_';
         }
       }
-      console.log(temp);
+      console.log(snake);
     }
   }
 }
