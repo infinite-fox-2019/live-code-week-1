@@ -40,12 +40,13 @@ const boards4 = printBoard(stage4, lengthStage4);
 // console.log(boards4);
 
 function marioLastPosition(boards, jumpPower) {
-  for (let i=0; i<boards; i++) {
-    console.log(boards);
-    for (let j=0; j<boards[i].length; j++) {
+  for (let i=0; i<boards.length; i++) {
+    for (let j=0; j<board[i].length; j++) {
       
     }
   }
+  
+  
 }
 marioLastPosition()
 

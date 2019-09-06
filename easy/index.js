@@ -2,20 +2,21 @@
 function makeSolvent() {
   const availableIngredients = 'CFHOP';
   //akan akses index string, index yg mana akan di random
-  let solvent = []
+  let solvent = ''
   let randIdx = Math.floor(Math.random() * 4) + 1
   console.log(randIdx);
   let randParam = Math.floor(Math.random() * 6) + 4
   console.log(randParam);
   
+  let res = []
   for (let i=0; i<3; i++) {
-    solvent.push([])
+    res = []
     for (let j=0; j<randParam; j++) {
-
-      solvent[solvent.length-1].push(availableIngredients[randIdx])
+      solvent += availableIngredients[randIdx]
     }
+    res.push(solvent)
   }
-  console.log(solvent);
+  // console.log(res);
   
 }
 makeSolvent()
@@ -41,6 +42,8 @@ console.log(checkTotalEnergy('HPHO'));
 console.log(checkTotalEnergy('HHHO'));
 // checkTotalEnergy('HHHHOO'); // expected return 1 energy 4 H 2 O
 console.log(checkTotalEnergy('HHHHOO'));
+
+
 // RELEASE 2
 function waterSupply(needEnergy) {
   // code here
@@ -48,7 +51,9 @@ function waterSupply(needEnergy) {
 
 // RELEASE 3
 function aggregate(solvent) {
-  // code here
+  
 }
+aggregate('HPCH'); // CH2P
+aggregate('HHHO'); // H30
 
 console.log(waterSupply(3));
