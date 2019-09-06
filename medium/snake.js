@@ -13,33 +13,35 @@ function generateSnake(row, column) {
       for (let j=0; j<column; j++) {
         if (i === 0 && j === 0) {
           display = '~'
-        } else { 
-          display += "_"
-        }
-        if (i !== 0 && j === 0) {
+        } else if (i !== 0 && j === 0) {
           display = '|'
+        } else if (i === row-1 && j === column-1) {
+          display += 'o'
         } else {
           display += '_'
         }
       }
     } else if (i % 2 !== 0) {
-      for (let j=column; j>=0; j--) {
+      for (let j=0; j<column; j++) {
         if (j === column-1) {
-            // console.log(j, column-1);
-            display = '|'
-          // console.log(i, row, row-1);
-        } else if (i === row-1 ) { //&& j === 0
-          
-          display = '|'
+            display += '|'
         } else {
             display += '_'
-          }
         }
-
       }
+
+    }
       console.log(display);
   }
 }
+generateSnake(2, 10);
 
-generateSnake(3, 6);
+/*
+
+~____
+____|
+|___o
+
+
+*/
 
