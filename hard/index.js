@@ -33,19 +33,41 @@ const boards3 = printBoard(stage3, lengthStage3);
 const boards4 = printBoard(stage4, lengthStage4);
 
 // RELEASE 0
-// console.log(boards1);
-// console.log(boards2);
-// console.log(boards3);
-// console.log(boards4);
+console.log(boards1);
+console.log(boards2);
+console.log(boards3);
+console.log(boards4);
 
 function marioLastPosition(boards, jumpPower) {
   // code here
+  let currentPosition = [];
+  var cekLoncat = checkLoncat(boards, jumpPower)
+  if (boards[cekLoncat[0]][cekLoncat[1+1]] !== 'x'){
+    currentPosition.push([cekLoncat[0][cekLoncat[1+1]]])
+  }
+  return currentPosition;
 }
 
+function checkLoncat (boards, jumpPower) {
+  var start = [boards[boards.length-1][0]];
+  var cekBatu = true;
+  var counterJalan = 0;  
+  var currentBatu = [];
+  while (cekBatu) {
+        if (boards[boards.length-1][0+counterJalan] !== 'x') {
+            counterJalan++
+        } else {
+          currentBatu.push(boards.length-1, counterJalan);
+          cekBatu = false;
+        }
+  }
+  return currentBatu;
+};
+
 // RELEASE 1
-// const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
-// const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
-// const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
+const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
+const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
+const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
 
 function clearScreen() {
   // Un-comment this line if you have trouble with console.clear();

@@ -24,7 +24,6 @@ function generateSnake(row, column) {
           } 
       }
     }
-  }
   console.log(result);
 };
 
