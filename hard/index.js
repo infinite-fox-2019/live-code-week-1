@@ -15,6 +15,23 @@ const jumpPowerStage4 = 2;
 
 function printBoard(strTrack, lengthTrack) {
   // code here
+    let hasil = []
+    let count = 0
+    for( let i = 0; i < lengthTrack; i++){
+        let temp = []
+        for(let j = 0;  j < lengthTrack; j++){
+          if(strTrack[count] != 'x'){
+            temp.push(' ')
+            count += 1
+          } else {
+            temp.push(strTrack[count])
+            count += 1
+          }
+        }
+        hasil.push(temp)
+    }
+    return hasil
+    
 }
 
 const boards1 = printBoard(stage1, lengthStage1);
@@ -23,17 +40,26 @@ const boards3 = printBoard(stage3, lengthStage3);
 const boards4 = printBoard(stage4, lengthStage4);
 
 // RELEASE 0
-// console.log(boards1);
-// console.log(boards2);
-// console.log(boards3);
-// console.log(boards4);
+console.log(boards1);
+console.log(boards2);
+console.log(boards3);
+console.log(boards4);
 
 function marioLastPosition(boards, jumpPower) {
   // code here
+  let awal = boards[boards.length-1]
+  boards[boards.length-1][0] ='x'
+  let i = 0
+  while(awal < boards.length){
+    clearScreen()
+    boards[boards.length-1][i] ='x'
+    i++
+  }
+  console.log(boards); 
 }
 
 // RELEASE 1
-// const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
+const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
 // const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
 // const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
 
