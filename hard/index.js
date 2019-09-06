@@ -38,10 +38,10 @@ const boards3 = printBoard(stage3, lengthStage3);
 const boards4 = printBoard(stage4, lengthStage4);
 
 // RELEASE 0
-console.log(boards1);
-console.log(boards2);
-console.log(boards3);
-console.log(boards4);
+console.table(boards1);
+console.table(boards2);
+console.table(boards3);
+console.table(boards4);
 
 function marioLastPosition(boards, jumpPower) {
   // code here
