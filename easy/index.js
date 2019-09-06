@@ -13,23 +13,26 @@ function makeSolvent() {
 
 // RELEASE 1
 function checkTotalEnergy(solvent) {
-  let penampung = []
-  let contoh = 'HHPOO'
-  let contohSplit = contoh.split('')
-  // let result = []
-  let count = 0
-  for(let i=0; i<contoh.length; i++){
-      if(contohSplit[i] === 'H'){
-          count+=1
-          penampung.push('H'+count)
-      }else if(contohSplit[i] === 'O'){
-          count+=1
-          penampung.push('O'+count)
+
+  let penampungH= []
+  let penampungO= []
+  let solventSplit = solvent.split('')
+  let countH = 0
+  let countO = 0
+  let energy = 0
+  for(let i=0; i<solvent.length; i++){
+      if(solventSplit[i] === 'H'){
+          countH+=1
+          penampungH.push(countH)
+      }
+      if(solventSplit[i] === 'O'){
+          countO +=1
+          penampungO.push(countO)
       }
   }
-  return penampung
+  return Math.max(...penampungH)+' H '+ Math.max(...penampungO) +' O '
 }
-
+console.log(checkTotalEnergy('HHOO'))
 // RELEASE 2
 function waterSupply(needEnergy) {
   // code here
