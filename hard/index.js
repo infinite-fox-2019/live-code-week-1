@@ -14,7 +14,17 @@ const jumpPowerStage4 = 2;
 // STATIC Stage End
 
 function printBoard(strTrack, lengthTrack) {
-  // code here
+ 
+  let output = []
+  let counter = 0
+
+  for(let i = 0 ; i<lengthTrack; i+=lengthTrack){
+    output.push([])
+    for(let j = 0; j<strTrack.length; j++){
+      output[counter].push(strTrack[i+j])
+    }
+  }
+  return output
 }
 
 const boards1 = printBoard(stage1, lengthStage1);
