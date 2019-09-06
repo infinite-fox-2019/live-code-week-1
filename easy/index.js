@@ -43,7 +43,6 @@ function waterSupply(needEnergy) {
   // code here
   let output = []
   let sisaEnergi = needEnergy
-  while (sisaEnergi > 0) {
     let solvent1 = checkTotalEnergy(solvent)
     let obj = {
       name:solvent1.solvent,
@@ -51,10 +50,10 @@ function waterSupply(needEnergy) {
       }
     sisaEnergi = sisaEnergi - obj.energi
     output.push(obj)
-  }
-  return output
+    if (sisaEnergi > 0) return waterSupply(sisaEnergi)
+    return output
 }
-console.log(waterSupply(2))
+console.log(waterSupply(3))
 
 // // RELEASE 3
 // function aggregate(solvent) {
