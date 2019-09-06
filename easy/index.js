@@ -14,19 +14,17 @@ function makeSolvent() {
 function checkTotalEnergy(solvent) {
   // code here
   let obj = {H : 0, O: 0}
-  for (let i = 0; i < chemical.length - 1; i++) {
+  for (let i = 0; i < chemical.length; i++) {
     if (chemical[i] === 'H') {
       obj.H++
     } else if (chemical[i] === 'O') {
       obj.O++
     }
   }
-  if (obj.H / 2 >= obj.O || obj.O >= obj.H / 2) {
-    if (Math.abs(obj.H / 2 - obj.O) > 0) {
-      numberOfEnergy++
-    }
+  while ((numberOfEnergy <= obj.H / 2) && (numberOfEnergy <=obj.O)) {
+    numberOfEnergy++
   }
-  return `${numberOfEnergy} energy ${obj.H} H ${obj.O} O`
+  return numberOfEnergy
 }
 
 // RELEASE 2
