@@ -112,7 +112,9 @@ function aggregate(solvent) {
 
 result2
 
-for
+for (let i = 0; i < result2.length; i++) {
+  console.log(aggregate(result2[i].name))
+}
 
 // aggregate('HPCH'); // CH2P
 // aggregate('HHHO'); // H30
