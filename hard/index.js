@@ -15,29 +15,27 @@ const jumpPowerStage4 = 2;
 
 function printBoard(strTrack, lengthTrack) {
   // code here
-  console.log(strTrack.length)
+  // console.log(strTrack.length)
   let out = []
   let temp = []
   // let counter = 0
   for(let i = 0; i < strTrack.length; i++){
-      if(i % (lengthTrack-1) === 0 && i !== 0){
-          temp.push(strTrack[i])
+      if(i % (lengthTrack) === 0 && i !== 0){
           out.push(temp)
-          temp = []
+          temp = []   
       }
       temp.push(strTrack[i])
   }
+  out.push(temp)
   return out
 }
+
+
+
 const boards1 = printBoard(stage1, lengthStage1);
 const boards2 = printBoard(stage2, lengthStage2);
 const boards3 = printBoard(stage3, lengthStage3);
 const boards4 = printBoard(stage4, lengthStage4);
-console.log(boards1)
-console.log(boards2)
-console.log(boards3)
-console.log(boards4)
-
 
 // RELEASE 0
 // console.log(boards1);
@@ -45,14 +43,44 @@ console.log(boards4)
 // console.log(boards3);
 // console.log(boards4);
 
+
+
 function marioLastPosition(boards, jumpPower) {
   // code here
+  
+  let arena = boards
+  if(jumpPower > arena.length)jumpPower = arena.length
+
+  let obstacle = []
+  for(let horizontalMove = 0; horizontalMove < arena[0].length; horizontalMove++){
+    let heightX = 0
+    for(let j = 0; j < arena.length; j++){
+      if(arena[j][horizontalMove] === 'x')heightX ++
+    }
+    obstacle.push(heightX)
+  }
+
+  for(let i = 0; i < obstacle.length; i++){
+    if(jumpPower <= obstacle[i] && obstacle[i] !== 0){
+      var lastPosition = i-1
+    }
+  }
+
+  if(lastPosition === undefined)return 'Congratulation you win the game'
+  else return `you stuck at step ${lastPosition}`
+
 }
 
+
 // RELEASE 1
-// const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
-// const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
-// const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
+const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
+const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
+const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
+// console.log(marioLastPos1)
+// console.log(marioLastPos2)
+// console.log(marioLastPos3)
+
+
 
 function clearScreen() {
   // Un-comment this line if you have trouble with console.clear();
@@ -71,13 +99,54 @@ function sleep(milliseconds) {
 
 function animate(boards, jumpPower) {
   // code here
+
+  let mario = [ (boards.length-1) , 0 ]
+  while (true){
+    clearScreen()
+    boards[mario[0]][mario[1]] = 'M'
+    
+    console.log(boards)
+    
+    boards[mario[0]][mario[1]] = 'O'
+    
+    // sleep(1500)
+    // clearScreen()
+  
+    mario = eachJump(jumpPower,mario)
+    console.log(boards)
+    // boards[mario[0]][mario[1]] = 'O'
+
+    // sleep(1500)
+    // clearScreen()
+
+    // mario = eachMove(mario)
+    // boards[mario[0]][mario[1]] = 'M'
+    // console.log(boards)
+  }
+
+  function eachJump(jumpPower,position){
+    if(position[0] - jumpPower < 0){
+      position[0] = 0
+    }
+    position[0] -= jumpPower
+    return [position[0],position[1]]
+
+  }
+  function eachMove(position){
+    if(boards[position[0]][position[1]+1] === 'X')
+      return false
+    else{
+      return [position[0] , [position[1] + 1]]
+    }
+  }
+
 }
 
 
 // RELEASE 2
 // animate(boards1, jumpPowerStage1);
 // RELEASE 3
-// animate(boards2, jumpPowerStage2);
+animate(boards2, jumpPowerStage2);
 // animate(boards3, jumpPowerStage3);
 // RELEASE 4
 // animate(boards4, jumpPowerStage4);
