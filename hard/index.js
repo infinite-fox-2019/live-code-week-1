@@ -15,6 +15,16 @@ const jumpPowerStage4 = 2;
 
 function printBoard(strTrack, lengthTrack) {
   // code here
+  let board = [];
+  let count = 0;
+  for(let i=0; i<strTrack.length; i+=lengthTrack){
+    board.push([])
+    for(let j=0; j<strTrack.length; j++){
+      board[count].push(strTrack[count+j]);
+    }
+    count+=1;
+  }
+  return board;
 }
 
 const boards1 = printBoard(stage1, lengthStage1);
@@ -23,7 +33,7 @@ const boards3 = printBoard(stage3, lengthStage3);
 const boards4 = printBoard(stage4, lengthStage4);
 
 // RELEASE 0
-// console.log(boards1);
+console.log(boards1);
 // console.log(boards2);
 // console.log(boards3);
 // console.log(boards4);

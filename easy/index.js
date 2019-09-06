@@ -73,13 +73,26 @@ function checkTotalEnergy(solvent) {
 function waterSupply(needEnergy) {
   // code here
   let kimia = checkTotalEnergy();
-  // let arr = [];
-  // while(needEnergy > 0){
-  //   if(kimia.energy === needEnergy){
-  //     arr.push(kimia)
-  //   }
-  // }
-  return kimia[1];
+  let obj = {};
+  let count = 2;
+  while(needEnergy>0){
+    let angka = []
+    let huruf = [];
+    for(let i=0; i<kimia.length; i++){
+      if(i%4 === 0){
+        angka.push(kimia[i])
+      }
+      // break;
+    }
+    for(let i=2; i<kimia.length; i+=4){
+      huruf.push(kimia[i])
+    }
+    obj['energy']=angka;
+    obj['name']=huruf;
+    needEnergy -- ;
+  }
+  console.log(kimia)
+  return obj;
 }
 
 // RELEASE 3
