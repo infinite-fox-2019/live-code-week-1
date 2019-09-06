@@ -71,12 +71,15 @@ function aggregate(solvent) {
   let str = '';
   for (let i=0; i<urutan.length; i++){
     for (let key in obj){
-      if (urutan[i] == obj[key]){
-        str += obj
+      if (urutan[i] == key){
+        str += urutan[i]{
+        if (obj[key] >= 2){
+          str += obj[key]
+        }
       }
     }
   }
-  return arr;
+  return str;
 }
 
 console.log(aggregate('HPCH')); // CH2P
