@@ -1,25 +1,28 @@
 // RELEASE 0
 function makeSolvent() {
   const availableIngredients = 'CFHOP';
-  //akan akses index string, index yg mana akan di random
-  let solvent = ''
+   
   let randIdx = Math.floor(Math.random() * 4) + 1
   console.log(randIdx);
   let randParam = Math.floor(Math.random() * 6) + 4
   console.log(randParam);
   
   let res = []
+  let solvent = []
   for (let i=0; i<3; i++) {
-    res = []
+    solvent = []
     for (let j=0; j<randParam; j++) {
       solvent += availableIngredients[randIdx]
     }
     res.push(solvent)
   }
-  // console.log(res);
+  
+  console.log(res.join(', '));
   
 }
 makeSolvent()
+
+
 
 // RELEASE 1
 let obj = {}
@@ -46,7 +49,12 @@ console.log(checkTotalEnergy('HHHHOO'));
 
 // RELEASE 2
 function waterSupply(needEnergy) {
-  // code here
+  let res = []
+  let obj = {}
+  for (let i=0; i<3; i++) {
+    if (solvent)
+  }
+ 
 }
 
 // RELEASE 3

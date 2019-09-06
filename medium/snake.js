@@ -29,7 +29,6 @@ function generateSnake(row, column) {
             display += '_'
         }
       }
-
     }
       console.log(display);
   }
