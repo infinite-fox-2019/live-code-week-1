@@ -58,7 +58,6 @@ generateSnake(0, 0)
 generateSnake(1, 1)
 
 
-
 // generateSnake(row, column)
 // berikut adalah hasil: generateSnake(6,10)
 // ~_________

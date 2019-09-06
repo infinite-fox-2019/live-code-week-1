@@ -50,6 +50,7 @@ function marioLastPosition(boards, jumpPower) {
   let count = 0
   const power = jumpPower
   // HARDCODE
+  
     if (boards[boards.length-1][1] == ' ') {
       boards[boards.length-1][1] = 'M'
       boards[boards.length-1][0] = ' '

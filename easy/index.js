@@ -119,6 +119,7 @@ function newWater(){
 }
 // newWater()
 
+
 function waterSupply(needsssssEnergy) {
   let testingwater = newWater()
   console.log(testingwater.energy);
