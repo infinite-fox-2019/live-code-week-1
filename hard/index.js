@@ -35,17 +35,30 @@ const boards4 = printBoard(stage4, lengthStage4);
 
 // RELEASE 0
 // console.log(boards1);
-// console.log(boards2);
+console.log(boards2);
 // console.log(boards3);
 // console.log(boards4);
 
 function marioLastPosition(boards, jumpPower) {
   // code here
+  let stuck = -1
+  for(let i = boards.length - 1; i < boards.length; i++){
+    for(let j = 0; j < boards[i].length; j++) {
+      console.log(i - jumpPower)
+      console.log(j);
+      if(boards[i - jumpPower][j] !== 'o') {
+        stuck = j;
+        break;
+      } 
+    }
+  }
+  
+  stuck > -1 ? console.log(`Oops! You stuck at the step ${stuck - 1}`) : console.log('Congratulations you win the game');
 }
 
 // RELEASE 1
 // const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
-// const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
+const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
 // const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
 
 function clearScreen() {
