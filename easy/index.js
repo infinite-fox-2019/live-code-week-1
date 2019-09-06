@@ -1,36 +1,35 @@
 // RELEASE 0
-function makeSolvent() {
+function makeneedEnergy() {
   const availableIngredients = 'CFHOP';
    // proses untuk membuat 4 - 10 senyawa kimia dari available Ingridient secara random
   let UnsurKimia = []
     for(let i = 0 ; i < 4 ; i++){
       let random = Math.round(Math.random()* 10)
-      if (random < 4) { return makeSolvent()}
+      if (random < 4) { return makeneedEnergy()}
       let temp = []
       for(let j = 0 ; j < random ;j++){
         temp.push(availableIngredients[Math.floor(Math.random()* availableIngredients.length)])
       }
       UnsurKimia.push(temp.join(''))
     }
-    console.log(UnsurKimia);
     let checkUnsur = []
     for(let i = 0 ; i < UnsurKimia.length ;i++){
       checkUnsur.push(checkTotalEnergy(UnsurKimia[i]))
     }
-
+    console.log(UnsurKimia);
     console.log(checkUnsur);
+    return checkUnsur
 }
-makeSolvent()
-
+makeneedEnergy()
 // RELEASE 1
-function checkTotalEnergy(solvent) {
+function checkTotalEnergy(needEnergy) {
   // proses untuk menghitung total energy
   let obj = {}
-  for(let i = 0 ; i < solvent.length ; i++){
-    if (!obj[solvent[i]]) {
-      obj[solvent[i]] = 1
+  for(let i = 0 ; i < needEnergy.length ; i++){
+    if (!obj[needEnergy[i]]) {
+      obj[needEnergy[i]] = 1
     } else {
-      obj[solvent[i]] += 1
+      obj[needEnergy[i]] += 1
     }
   }
   // console.log(obj);
@@ -44,15 +43,15 @@ function checkTotalEnergy(solvent) {
 // console.log(string);
 
   if ((string[0] = '2' && string[1] == 'H') && (string[2] == '1' && string[3] == 'O')) {
-    return(`4 energy ${string}`);  
+    return(`1 energy ${string}`);    
   } else if (((string[0] > '2' && string[0] <= '4') && string[1] == 'H') && (string[2] == '2' && string[3] == 'O')){
-    return({energy:2, senyawa: string});    
+    return(`2 energy ${string}`);    
   }else if (((string[0] > '4' && string[0] <= '6') && string[1] == 'H') && (string[2] == '3' && string[3] == 'O')){
-    return({energy:3, senyawa: string});    
+    return(`3 energy ${string}`);       
   }else if (((string[0] > '6' && string[0] <= '8') && string[1] == 'H') && (string[2] == '4' && string[3] == 'O')){
     return(`4 energy ${string}`);    
   } else {
-    return({energy:0, senyawa: string});
+    return(`0 energy ${string}`);    
   }
 }
 // rules
@@ -64,14 +63,46 @@ function checkTotalEnergy(solvent) {
 // checkTotalEnergy('HHHHOO'); // expected return 1 energy 4 H 2 O
 
 // RELEASE 2
-function waterSupply(needEnergy) {
-  // proses untuk membuat solvent hingga energy yang dibutuhkan terpenuhi
+function newWater(){
+  const availableIngredients = 'CFHOP';
+   // proses untuk membuat 4 - 10 senyawa kimia dari available Ingridient secara random
+  let UnsurKimia = []
+    for(let i = 0 ; i < 1 ; i++){
+      let random = Math.round(Math.random()* 10)
+      if (random < 4) { return makeneedEnergy()}
+      let temp = []
+      for(let j = 0 ; j < random ;j++){
+        temp.push(availableIngredients[Math.floor(Math.random()* availableIngredients.length)])
+      }
+      UnsurKimia.push(temp.join(''))
+    }
 
+    // let checkUnsur = []
+    // for(let i = 0 ; i < UnsurKimia.length ;i++){
+    //   checkUnsur.push(UnsurKimia[i])
+    // }
+    console.log(UnsurKimia);
+    return UnsurKimia
 }
+newWater()
+
+function waterSupply(needEnergy) {
+  if (waterSupply) {
+    
+  }
+  // let obj = {
+  //   name: '',
+  //   energy: 0
+  // }
+  // if (obj.energy !== needEnergy) {
+    
+  // }
+// console.log(string);
+  
+}
+console.log(waterSupply(3));
 
 // // RELEASE 3
-// function aggregate(solvent) {
+// function aggregate(needEnergy) {
 //   // code here
 // }
-
-console.log(waterSupply(3));
