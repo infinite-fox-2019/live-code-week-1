@@ -46,9 +46,7 @@ function waterSupply(needEnergy) {
   while (energy < needEnergy){
     kimia = makeSolvent()
     energy = checkTotalEnergy(kimia)
-    if (energy < needEnergy){
-      arr.push({name : kimia, energy: energy})
-    }
+    arr.push({name : kimia, energy: energy})
   }
   return arr;
 }
