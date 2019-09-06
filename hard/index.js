@@ -15,6 +15,22 @@ const jumpPowerStage4 = 2;
 
 function printBoard(strTrack, lengthTrack) {
   // code here
+  let board = []
+  let count = 0
+  for (let i = 0; i < strTrack.length; i+= lengthTrack) {
+    board.push([])
+    for (let j = 0; j < lengthTrack; j++) {
+      if (strTrack[i + j] === 'o') {
+        board[count].push(' ')
+      }
+      else {
+        board[count].push(strTrack[i + j])
+      }
+    }
+    count++
+  }
+  return board
+
 }
 
 const boards1 = printBoard(stage1, lengthStage1);
@@ -23,19 +39,37 @@ const boards3 = printBoard(stage3, lengthStage3);
 const boards4 = printBoard(stage4, lengthStage4);
 
 // RELEASE 0
-// console.log(boards1);
-// console.log(boards2);
-// console.log(boards3);
-// console.log(boards4);
+console.log(boards1);
+console.log(boards2);
+console.log(boards3);
+console.log(boards4);
 
 function marioLastPosition(boards, jumpPower) {
   // code here
+  let highestObstaclePosition = []
+  for (let i = 0; i < boards.length; i++) {
+    if (boards[i].indexOf('x') !== -1) {
+      highestObstaclePosition = [i + 1, boards[i].indexOf('x') + 1]
+      break
+    }
+  }
+  console.log(highestObstaclePosition)
+  if ((Number(highestObstaclePosition[0])) <= boards.length - 1 || highestObstaclePosition === []) {
+    return `Oops! You stuck at the step ${highestObstaclePosition[1] - 2}`
+  }
+  else {
+    return 'Congratulations you win the game'
+  }
 }
 
 // RELEASE 1
-// const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
-// const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
-// const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
+const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
+const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
+const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
+
+console.log(marioLastPos1)
+console.log(marioLastPos2)
+console.log(marioLastPos3)
 
 function clearScreen() {
   // Un-comment this line if you have trouble with console.clear();
