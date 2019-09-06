@@ -15,6 +15,28 @@ const jumpPowerStage4 = 2;
 
 function printBoard(strTrack, lengthTrack) {
   // code here
+  const row = strTrack.length / lengthTrack
+  const col = lengthTrack
+  let count = 0
+  const board = []
+
+
+  for (let i = 0; i < row; i++) {
+    const row = []
+    for (let j = 0; j < col; j++) {
+      if (strTrack[count] == 'o') {
+        row.push(' ')
+      } else {
+
+        row.push(strTrack[count])
+      }
+      count++
+    }
+    board.push(row)
+  }
+
+  return board
+
 }
 
 const boards1 = printBoard(stage1, lengthStage1);
@@ -22,11 +44,11 @@ const boards2 = printBoard(stage2, lengthStage2);
 const boards3 = printBoard(stage3, lengthStage3);
 const boards4 = printBoard(stage4, lengthStage4);
 
-// RELEASE 0
-// console.log(boards1);
-// console.log(boards2);
-// console.log(boards3);
-// console.log(boards4);
+//RELEASE 0
+console.log(boards1);
+console.log(boards2);
+console.log(boards3);
+console.log(boards4);
 
 function marioLastPosition(boards, jumpPower) {
   // code here
