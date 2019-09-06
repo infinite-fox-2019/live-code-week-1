@@ -55,7 +55,29 @@ function waterSupply(needEnergy) {
 
 // RELEASE 3
 function aggregate(solvent) {
+  let countC = 0;
+  let countF = 0;
+  let countH = 0;
+  let countO = 0;
+  let countP = 0;
 
+  for(let i = 0; i < solvent.length; i++) {
+    if(listOfSolvent[i] === 'C') {
+      countC++;
+    } else if(listOfSolvent[i] === 'F') {
+      countF++;
+    } else if(listOfSolvent[i] === 'H') {
+      countH++;
+    } else if(listOfSolvent[i] === 'O') {
+      countO++;
+    } else if(listOfSolvent[i] === 'P') {
+      countP++;
+    } 
+  }
+  return (countC, countF, countH, countO, countP);
 }
 
-console.log(waterSupply(100));
+console.log(waterSupply(3));
+
+// let listOfSolvent = waterSupply(3)
+// console.log(aggregate(listOfSolvent.name));
