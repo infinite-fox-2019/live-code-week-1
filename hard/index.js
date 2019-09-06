@@ -99,45 +99,79 @@ function sleep(milliseconds) {
 
 function animate(boards, jumpPower) {
   // code here
-
+  clearScreen()
+  let obstacle = marioObstacle(boards)
   let mario = [ (boards.length-1) , 0 ]
-  while (true){
+  console.log(mario)
+  boards[mario[0]][mario[1]] = 'M'
+  // console.log(boards)
+  for(let i = 0; i < obstacle.length; i++){
+    
+    sleep(2000)
     clearScreen()
-    boards[mario[0]][mario[1]] = 'M'
-    
     console.log(boards)
-    
+    // console.log(mario)
     boards[mario[0]][mario[1]] = 'O'
-    
-    // sleep(1500)
-    // clearScreen()
-  
     mario = eachJump(jumpPower,mario)
+    // console.log(mario)
+    boards[mario[0]][mario[1]] = 'M'
+
+    sleep(1000)
+    clearScreen()
     console.log(boards)
-    // boards[mario[0]][mario[1]] = 'O'
 
-    // sleep(1500)
-    // clearScreen()
+    boards[mario[0]][mario[1]] = 'O'
+    mario = eachMove(mario)
+    // console.log(mario)
+    boards[mario[0]][mario[1]] = 'M'
 
-    // mario = eachMove(mario)
-    // boards[mario[0]][mario[1]] = 'M'
-    // console.log(boards)
+
+
   }
 
+
+
   function eachJump(jumpPower,position){
+    console.log(position[1])
     if(position[0] - jumpPower < 0){
       position[0] = 0
+    }else{
+      // console.log('bb')
+      position[0] -= jumpPower
     }
-    position[0] -= jumpPower
-    return [position[0],position[1]]
+    return [ position[0] , Number(position[1]) ]
 
   }
   function eachMove(position){
-    if(boards[position[0]][position[1]+1] === 'X')
-      return false
-    else{
-      return [position[0] , [position[1] + 1]]
+    // console.log('eachmove=> ' , position)
+    if(boards.length-1 , [position[1] + 1] === 'x'){
+      return [boards.length-2 , [position[1] + 1]]
     }
+    return [boards.length-1 , [position[1] + 1]]
+    
+  }
+
+  function marioObstacle(boards, jumpPower) {
+    // code here
+    
+    let arena = boards
+    if(jumpPower > arena.length)jumpPower = arena.length
+  
+    let obstacle = []
+    for(let horizontalMove = 0; horizontalMove < arena[0].length; horizontalMove++){
+      let heightX = 0
+      for(let j = 0; j < arena.length; j++){
+        if(arena[j][horizontalMove] === 'x')heightX ++
+      }
+      obstacle.push(heightX)
+    }
+  
+    for(let i = 0; i < obstacle.length; i++){
+      if(jumpPower <= obstacle[i] && obstacle[i] !== 0){
+        var lastPosition = i-1
+      }
+    }
+    return obstacle
   }
 
 }
