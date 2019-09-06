@@ -22,7 +22,9 @@ function generateSnake(row, column) {
   }
   arr[0][0] = '~'
 
-  return arr
+  for (let a=0; a<row; a++) {
+    console.log(arr[a].join(''))
+  }
 }
-
-console.table(generateSnake(3, 20));
+generateSnake(1, 20)
+// console.table(generateSnake(3, 20));
