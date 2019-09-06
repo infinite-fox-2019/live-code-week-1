@@ -15,6 +15,24 @@ const jumpPowerStage4 = 2;
 
 function printBoard(strTrack, lengthTrack) {
   // code here
+
+  let arr_result = []
+  var index_array = 0
+
+  for (let i = 0; i < strTrack.length; i+=lengthTrack) {
+    arr_result.push([])
+    
+    for (let j = 0; j < lengthTrack; j++) {
+      if (strTrack[i + j] === 'o') {
+        arr_result[index_array].push(' ')
+      } else {
+        arr_result[index_array].push('x')
+      }
+    }
+    index_array++
+  }
+
+  return arr_result
 }
 
 const boards1 = printBoard(stage1, lengthStage1);
@@ -30,12 +48,59 @@ const boards4 = printBoard(stage4, lengthStage4);
 
 function marioLastPosition(boards, jumpPower) {
   // code here
+  // expected result stage 1 => 'Congratulations you win the game'
+  // expected result stage 2 => 'Congratulations you win the game'
+  // expected result stage 3 => 'Oops! You stuck at the step 0'
+
+  var countX = 0;
+
+  let height1 = stage1.length/lengthStage1
+  let height2 = stage2.length/lengthStage2
+  let height3 = stage3.length/lengthStage3
+
+  let arr_height = []
+  arr_height.push(height1, height2, height3)
+
+  let max = 0;
+  for (let i = 0; i < arr_height.length; i++) {
+    if (arr_height[i] > max) { 
+      max = arr_height[i]
+    }
+  }
+
+  for (let i = 0; i < boards.length; i++) {
+    for (let j = 0; j < max; j++) {
+      if (boards[i][j] === 'x') {
+        countX++
+        break;
+      }
+    }
+  }
+
+  // console.log(arr_height);
+  
+
+  for (let i = 0; i < arr_height.length; i++) {
+    if (jumpPower >= countX && jumpPower <= arr_height[i]) {
+      return 'Congratulations you win the game'
+    } else {
+      return 'Oops! You stuck at the step 0'
+    }
+  }
+
+  return boards
+
 }
 
 // RELEASE 1
-// const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
-// const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
-// const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
+const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
+const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
+const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
+
+console.log(marioLastPos1);
+console.log(marioLastPos2);
+console.log(marioLastPos3);
+
 
 function clearScreen() {
   // Un-comment this line if you have trouble with console.clear();
