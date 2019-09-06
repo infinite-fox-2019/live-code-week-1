@@ -120,9 +120,8 @@ function sleep(milliseconds) {
 }
 
 function animate(boards, obj) {
-  boards[boards.length -1][0] = 'M'
-
-  console.log(boards);
+  boards[boards.length -1][0] = 'M';
+    console.log(boards);
   sleep(500)
   boards[boards.length -1][0] = ' '
   for(i = 0; i<obj.marioPosition.length; i++){
@@ -138,7 +137,7 @@ function animate(boards, obj) {
   }
   return 'Mario Berhasil'
 }
-console.log(animate(boards1, marioLastPos1));
+console.log(animate(boards2, marioLastPos2));
 
 // RELEASE 2
 // animate(boards1, jumpPowerStage1);
