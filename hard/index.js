@@ -45,10 +45,25 @@ console.log(boards4);
 
 function marioLastPosition(boards, jumpPower) {
   // code here
-  console.log(boards);
-  console.log(jumpPower);
-  
-  
+
+  boards[boards.length-1][0] = 'M'
+  let count = 0
+  const power = jumpPower
+  // HARDCODE
+    if (boards[boards.length-1][1] == ' ') {
+      boards[boards.length-1][1] = 'M'
+      boards[boards.length-1][0] = ' '
+    }
+    if (boards[boards.length-1][2] == ' ') {
+      boards[boards.length-1][2] = 'M'
+      boards[boards.length-1][1] = ' '
+    }
+
+    for(let j = 0 ;  j < boards[boards.length-1] ; j++){
+      console.log(j);
+    }
+
+  console.log(boards);//position of mario
 }
 
 // RELEASE 1
