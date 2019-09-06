@@ -1,9 +1,32 @@
 // RELEASE 0
 function makeSolvent() {
   const availableIngredients = 'CFHOP';
-  // code here
+  let angkaRandom = Math.round(Math.random()*4);
+  let substr = Math.round(Math.random()*6+4);
+  let arr = [];
+  let str = "";
+  for(let i = 0; i < 4; i++){
+    arr.push([]);
+    substr = Math.round(Math.random()*6+4);
+    for (let j =0; j< substr;j++){
+      angkaRandom = Math.round(Math.random()*4);
+      // console.log(angkaRandom)
+      for (let k = 0; k < availableIngredients.length;k++){
+        if (k == angkaRandom){
+          str += availableIngredients[k];
+        }
+      }
+    }
+    // console.log(str);
+    arr[i].push(str);
+    str = "";
+  }
+  return arr
 }
-
+var solvent = [ [ 'FPFCHPF' ],
+[ 'HOFHFFOPF' ],
+[ 'COHHHOF' ],
+[ 'OHPFOFOCOH' ] ]
 // RELEASE 1
 function checkTotalEnergy(solvent) {
   // code here
@@ -19,4 +42,4 @@ function aggregate(solvent) {
   // code here
 }
 
-console.log(waterSupply(3));
+console.log(makeSolvent());
