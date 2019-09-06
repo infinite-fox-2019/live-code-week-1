@@ -35,19 +35,35 @@ const boards3 = printBoard(stage3, lengthStage3);
 const boards4 = printBoard(stage4, lengthStage4);
 
 // RELEASE 0
-// console.log(boards1);
-// console.log(boards2);
-// console.log(boards3);
-// console.log(boards4);
+ //console.log(boards1);
+ //console.log(boards2);
+ //console.log(boards3);
+ //console.log(boards4);
 
 function marioLastPosition(boards, jumpPower) {
   // code here
+  console.log(boards)
+  //console.log(jumpPower)
+
+  for(let i=0; i<boards.length; i++){
+    let count = 0
+    for(let j=0; j<boards.length; j++){
+      //console.log(i,j)
+      if(i===3){
+        boards[i][j]="M"
+        count++
+      }
+      console.log(boards,count)
+    }
+
+  }
+
 }
 
 // RELEASE 1
  const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
- const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
- const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
+ //const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
+ //const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
 
 function clearScreen() {
   // Un-comment this line if you have trouble with console.clear();

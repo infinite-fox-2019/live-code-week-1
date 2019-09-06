@@ -7,7 +7,9 @@ function generateSnake(row, column) {
     let line =[]
     for(let j=0; j<column; j++){
       let str=""
-      if(i%2 === 0 && i===0 && j===0){
+      if(row%2 === 0 && i===0 && j===0){
+        str="~"
+      }else if(row%2 !== 0 && i===0 && j===column-1){
         str="~"
       }else if(i%2 !== 0 && j===0){
         str="||"
@@ -29,4 +31,4 @@ function generateSnake(row, column) {
   console.log(snake)
 }
 
-generateSnake(4, 6);
+generateSnake(3, 6);
