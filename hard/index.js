@@ -1,6 +1,5 @@
 // STATIC Stage Information
 const stage1 = 'oooooooooooooooo';
-console.log(stage1.length)
 const lengthStage1 = 4;
 const stage2 = 'oooooooooooooooooxoo';
 const lengthStage2 = 5;
@@ -43,10 +42,61 @@ const boards4 = printBoard(stage4, lengthStage4);
 // console.log(boards3);
 // console.log(boards4);
 
+// Fungsi untuk mengecek apakah ada rintangan diindeks itu
+function kordinatRintangan(boards , indeks){
+
+  let kordinatRintangan = []
+  for(let i = 0; i < boards.length; i++){
+    for(let j = 0; j < boards[i].length; j++){
+      if(boards[i][j] == 'x')
+      kordinatRintangan.push([i,j])
+    }
+  }
+
+  for(let i = 0; i < kordinatRintangan.length; i++){
+    if((kordinatRintangan[i][0] == indeks[0]) && (kordinatRintangan[i][1] == indeks[1])){
+      return true;
+    }
+  }
+  return false;
+}
+
+// console.log(boards2)
+// console.log(kordinatRintangan(boards2,[3,2]))
+
 function marioLastPosition(boards, jumpPower) {
-  let marioStartPosisition  = boards[length-1][0];
+  let xm = boards.length-1
+  let marioStartPosisition  = [xm,0];
+  boards[xm][0] = 'M'
+
+  boards[xm].length-1
+  let finish = false;
+  // while(!finish){
+    
+  //   if(!kordinatRintangan(boards, [marioStartPosisition[0],marioStartPosisition[1]+1])){
+  //     marioStartPosisition[1] += 1
+  //     boards[xm][marioStartPosisition[1]] = 'M'
+  //     console.log('asd')
+  //   }
+
+  //   console.log(boards)
+    
+
+  //   if(marioStartPosisition[1] == boards[xm][boards[xm].length-1]){
+  //     console.log(boards)
+  //     finish = true;
+  //     break;
+  //   }
+
+  // }
   
 }
+
+marioLastPosition(boards1, jumpPowerStage1);
+console.log(boards1)
+
+
+
 
 // RELEASE 1
 // const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
