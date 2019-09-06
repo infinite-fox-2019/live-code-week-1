@@ -16,7 +16,7 @@ function makeSolvent() {
   return str;
 }
 
-// console.log(makeSolvent())
+console.log(makeSolvent())
 
 // RELEASE 1
 function checkTotalEnergy(solvent) {
@@ -34,9 +34,9 @@ function checkTotalEnergy(solvent) {
   }
   return energy;
 }
-// console.log(checkTotalEnergy('HPHO')); // expected return 1 energy 2 H 1 O
-// console.log(checkTotalEnergy('HHHO')); // expected return 1 energy 3 H 1 O
-// console.log(checkTotalEnergy('HHHHOO')); // expected return 2 energy 4 H 2 O
+console.log(checkTotalEnergy('HPHO')); // expected return 1 energy 2 H 1 O
+console.log(checkTotalEnergy('HHHO')); // expected return 1 energy 3 H 1 O
+console.log(checkTotalEnergy('HHHHOO')); // expected return 2 energy 4 H 2 O
 
 // RELEASE 2
 function waterSupply(needEnergy) {
@@ -52,7 +52,7 @@ function waterSupply(needEnergy) {
   }
   return arr;
 }
-// console.log(waterSupply(3));
+console.log(waterSupply(3));
 
 // RELEASE 3
 function aggregate(solvent) {
