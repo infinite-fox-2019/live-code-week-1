@@ -2,6 +2,8 @@
 function makeSolvent() {
   const availableIngredients = 'CFHOP';
   // code here
+  let hasil = ''
+  let random = Math.floor(Math.random()*5)
 }
 
 // RELEASE 1
