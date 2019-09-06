@@ -27,7 +27,7 @@ function generateSnake(row, column) {
       }
     }
   }
-  
+
   if (row % 2 !== 0) {
     for (let i = 0; i < result.length; i++) {
       for (let j = 0; j < result[i].length; j++) {
@@ -75,3 +75,6 @@ function reverseArray(arr) {
   return result;
 }
 console.log(generateSnake(3, 10));
+
+
+// TINGGAL DI PUSH
