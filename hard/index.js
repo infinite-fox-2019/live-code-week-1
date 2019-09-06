@@ -14,7 +14,20 @@ const jumpPowerStage4 = 2;
 // STATIC Stage End
 
 function printBoard(strTrack, lengthTrack) {
-  // code here
+  let count = 0;
+  let board = [];
+  for (let i = 0; i < strTrack.length; i+=lengthTrack) {
+    let row = [];
+    for (let j = 0; j < lengthTrack; j++) {
+      if (strTrack[i+j] === 'o') {
+        row.push(' ');
+      } else {
+        row.push(strTrack[i+j]);
+      }
+    }
+    board.push(row);
+  }
+  return board;
 }
 
 const boards1 = printBoard(stage1, lengthStage1);
@@ -24,18 +37,49 @@ const boards4 = printBoard(stage4, lengthStage4);
 
 // RELEASE 0
 // console.log(boards1);
-// console.log(boards2);
+console.log(boards2);
 // console.log(boards3);
 // console.log(boards4);
 
 function marioLastPosition(boards, jumpPower) {
   // code here
+  let marioPos;
+  let rowBoard = boards.length;
+  let colBoard = boards[0].length;
+  let stuck = false;
+  let lastIndex = [(rowBoard-1), (colBoard-1)];
+  for (let i = 0; i < boards[rowBoard-1].length; i++) {
+    if (boards[rowBoard-1][i] === ' ') {
+      marioPos = [rowBoard-1, i];
+    } else {
+      for (let j = 1; j < rowBoard; j++) {
+        if (jumpPower > 0) {
+          jumpPower--;
+        } else {
+          stuck = true;
+          break;
+        }
+        if (boards[(rowBoard-1)-j][i] === ' ') {
+          marioPos = [(rowBoard-1)-j, i];
+          break;
+        } else if (j == rowBoard-1) {
+          stuck = true;
+        }
+      }
+    }
+    console.log(marioPos);
+  }
+  
+  if (marioPos[0] == lastIndex[0] && marioPos[1] == lastIndex[1]) {
+    console.log('Congratulations you win the game');
+    return marioPos;
+  }
 }
 
 // RELEASE 1
 // const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
-// const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
-// const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
+const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
+const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
 
 function clearScreen() {
   // Un-comment this line if you have trouble with console.clear();

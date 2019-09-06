@@ -11,19 +11,15 @@ function generateSnake(row, column) {
       for (let j = 0; j < column; j++) {
         if (i === 0 && j === 0) {
           rowSnake.push('~');
-        } else if (i === row -1 && i % 2 === 0) {
-          if (i === 0 && j === column - 1) {
-            rowSnake.push('o');
-          }
-        } else if (i === row -1 && i % 2 !== 0) {
-          if (i === row - 1 && j === column - 1) {
-            rowSnake.push('o');
-          }
+        } else if (i === row-1 && j === 0 && row % 2 === 0) {
+          rowSnake.push('o');
+        } else if (i === row-1 && j === column-1 && row % 2 !== 0) {
+          rowSnake.push('o');
         } else if (i % 2 === 0 && j === 0) {
           rowSnake.push('|');
         } else if (i % 2 !== 0 && j === column-1) {
           rowSnake.push('|');
-        }  else {
+        } else {
           rowSnake.push('_');
         }
       }
@@ -35,8 +31,8 @@ function generateSnake(row, column) {
   }
 }
 
-// generateSnake(3, 6);
+generateSnake(3, 6);
 generateSnake(6, 10);
-// generateSnake(1, 30);
-// generateSnake(1, 1);
-// generateSnake(0, 0);
+generateSnake(1, 30);
+generateSnake(1, 1);
+generateSnake(0, 0);
