@@ -14,7 +14,18 @@ const jumpPowerStage4 = 2;
 // STATIC Stage End
 
 function printBoard(strTrack, lengthTrack) {
-  // code here
+  let num = 0
+  let output = []
+  let stage = []
+  for (let i=0; i<(strTrack.length/lengthTrack); i++) {
+    stage = []
+    for (let j=0; j<lengthTrack; j++) {
+      stage.push(strTrack[num])
+      num++
+    }
+    output.push(stage)
+  }
+  console.log(output);
 }
 
 const boards1 = printBoard(stage1, lengthStage1);
@@ -29,11 +40,29 @@ const boards4 = printBoard(stage4, lengthStage4);
 // console.log(boards4);
 
 function marioLastPosition(boards, jumpPower) {
-  // code here
+  let countX = 0
+  for (let i=0; i<boards.length; i++) {
+    for (let j=0; j<board[i].length; j++) {
+      if (board[i][j] !== 'x') {
+        return `Congratulations you win the game`
+      } else {
+        countX++
+      }
+      if (countX < jumpPower) {
+        returnn `Congratulations you win the game`
+      }
+      if (countX === jumpPower) {
+        return `'Oops! You stuck at the step 0'`
+      }
+    }
+  }
+  
+  
 }
+marioLastPosition()
 
 // RELEASE 1
-// const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
+const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
 // const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
 // const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
 
