@@ -51,7 +51,18 @@ console.log(boards1);
 // console.log(boards4);
 
 function marioLastPosition(boards, jumpPower) {
-  // code here
+  console.log(boards,jumpPower)
+  boards[boards.length-1][0] = "X"
+  console.log(boards)
+  for (let i = 0; i < boards.length; i++){
+    for (let j = 0; j < boards[i].length; j++){
+      if (boards[boards.length-1][j] === " "){
+        boards[boards.length-1][j] = "X"
+      }
+    }
+  }
+  console.log(boards)
+
 }
 
 // RELEASE 1
