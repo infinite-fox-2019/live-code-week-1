@@ -48,7 +48,7 @@ function marioLastPosition(papan, loncat) {
   let boards = papan
   let jumpPower = loncat
   let mario = [boards.length-1, 0]
-  let step = 1
+  let step = 0
 
   while(mario[1] != boards[0].length-1){
     if(jumpPower < 0 || mario[0] < 0){
@@ -61,8 +61,8 @@ function marioLastPosition(papan, loncat) {
     }
     else{
       mario[1]++
+      step++
     }
-    step++
   }
   console.log('Congratulations you win the game');
   return ''
