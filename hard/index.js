@@ -15,6 +15,17 @@ const jumpPowerStage4 = 2;
 
 function printBoard(strTrack, lengthTrack) {
   // code here
+  let board = [];
+  let row = 0;
+  for(let i = 0; i < strTrack.length; i += lengthTrack) {
+    board[row] = [];
+    for(let j = 0; j < lengthTrack; j++) {
+      board[row][j] = strTrack[i + j];
+    }
+    row++;
+  }
+  
+  return board;
 }
 
 const boards1 = printBoard(stage1, lengthStage1);
