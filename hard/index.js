@@ -37,20 +37,20 @@ const boards4 = printBoard(stage4, lengthStage4);
 
 // RELEASE 0
 // console.log(boards1);
-console.log(boards2);
+// console.log(boards2);
 // console.log(boards3);
 // console.log(boards4);
 
 function marioLastPosition(boards, jumpPower) {
   // code here
-  let marioPos;
+  let marioPos = [];
   let rowBoard = boards.length;
   let colBoard = boards[0].length;
   let stuck = false;
   let lastIndex = [(rowBoard-1), (colBoard-1)];
   for (let i = 0; i < boards[rowBoard-1].length; i++) {
     if (boards[rowBoard-1][i] === ' ') {
-      marioPos = [rowBoard-1, i];
+      marioPos.push([rowBoard-1, i]);
     } else {
       for (let j = 1; j < rowBoard; j++) {
         if (jumpPower > 0) {
@@ -60,24 +60,30 @@ function marioLastPosition(boards, jumpPower) {
           break;
         }
         if (boards[(rowBoard-1)-j][i] === ' ') {
-          marioPos = [(rowBoard-1)-j, i];
+          marioPos.push([(rowBoard-1)-j, i]);
           break;
-        } else if (j == rowBoard-1) {
+        } else {
           stuck = true;
+          i = boards[rowBoard-1].length;
+          break;
         }
       }
     }
-    console.log(marioPos);
   }
   
-  if (marioPos[0] == lastIndex[0] && marioPos[1] == lastIndex[1]) {
-    console.log('Congratulations you win the game');
+  if (!stuck) {
+    if (marioPos[(marioPos.length-1)][0] == lastIndex[0] && marioPos[(marioPos.length-1)][1] == lastIndex[1]) {
+      console.log('Congratulations you win the game');
+      return marioPos;
+    }
+  } else {
+    console.log(`Oops! You stuck at the step ${marioPos[(marioPos.length-1)][1]}`);
     return marioPos;
   }
 }
 
 // RELEASE 1
-// const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
+const marioLastPos1 = marioLastPosition(boards1, jumpPowerStage1);
 const marioLastPos2 = marioLastPosition(boards2, jumpPowerStage2);
 const marioLastPos3 = marioLastPosition(boards3, jumpPowerStage3);
 
@@ -96,15 +102,26 @@ function sleep(milliseconds) {
   }
 }
 
-function animate(boards, jumpPower) {
+function animate(boards, marioPos, jumpPower) {
   // code here
+  for (let i = 0; i < marioPos.length; i++) {
+    if (i>0) {
+      boards[marioPos[i-1][0]][marioPos[i-1][1]] = ' ';
+    }
+    boards[marioPos[i][0]][marioPos[i][1]] = 'M';
+    clearScreen();
+    console.log(boards);
+    sleep(800);
+  }
+  boards[marioPos[marioPos.length-1][0]][marioPos[marioPos.length-1][1]] = ' ';
+  marioLastPosition(boards, jumpPower);
 }
 
 
 // RELEASE 2
-// animate(boards1, jumpPowerStage1);
+// animate(boards1, marioLastPos1, jumpPowerStage1);
 // RELEASE 3
-// animate(boards2, jumpPowerStage2);
-// animate(boards3, jumpPowerStage3);
+animate(boards2, marioLastPos2, jumpPowerStage2);
+// animate(boards3, marioLastPos3, jumpPowerStage3);
 // RELEASE 4
 // animate(boards4, jumpPowerStage4);
